@@ -39,10 +39,10 @@ _Add license information here._
 **Team Name:** Bug Buster
 
 **Members:**
-- Naeem
-- Zahid
-- Saniya
-- Arman
+- Naeem Shaikh
+- Zahid Khan 
+- Saniya Shaikh
+- Arman Shaikh
 
 ## Author
 
