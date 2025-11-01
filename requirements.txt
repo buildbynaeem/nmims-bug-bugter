@@ -1,2 +1,29 @@
-# List of Python libraries (Flask, OpenCV, etc.)
+# Flask and Web Framework
+Flask==3.0.0
+flask-cors==4.0.0
+flask-sqlalchemy==3.1.1
+Werkzeug==3.0.1
 
+# Database
+SQLAlchemy==2.0.23
+
+# Image Processing
+opencv-python==4.8.1.78
+Pillow==10.1.0
+
+# OCR (Optical Character Recognition)
+pytesseract==0.3.10
+
+# Machine Learning (optional - uncomment when using ML models)
+# tensorflow==2.15.0
+# torch==2.1.0
+# torchvision==0.16.0
+
+# Translation
+googletrans==4.0.0rc1
+
+# HTTP Requests (for API calls)
+requests==2.31.0
+
+# Environment Variables (for production)
+python-dotenv==1.0.0

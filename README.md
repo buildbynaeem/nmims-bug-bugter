@@ -1,4 +1,4 @@
-# NMIMS Bug Bugter
+# NMIMS Bug Buster
 
 A bug tracking application for NMIMS.
 
@@ -16,10 +16,10 @@ This project is a bug tracking system designed to help manage and track issues e
 
 ```bash
 # Clone the repository
-git clone https://github.com/buildbynaeem/nmims-bug-bugter.git
+git clone https://github.com/buildbynaeem/nmims-bug-buster.git
 
 # Navigate to the project directory
-cd nmims-bug-bugter
+cd nmims-bug-buster
 ```
 
 ## Usage

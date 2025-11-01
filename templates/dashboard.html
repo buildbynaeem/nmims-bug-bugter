@@ -1,13 +1,149 @@
-<!-- Main user dashboard -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard - Smart Crop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <h1>Dashboard</h1>
+<body class="dashboard-body">
+    <!-- Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-seedling"></i>
+                <span>Smart Crop</span>
+            </div>
+            <div class="nav-links">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#images" class="nav-link">Images</a>
+                <a href="#reports" class="nav-link">Soil Reports</a>
+                <a href="#profile" class="nav-link">Profile</a>
+                <button class="nav-logout-btn" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1 id="welcomeMessage">Welcome back!</h1>
+            <p id="farmInfo">Loading your farm information...</p>
+        </section>
+
+        <!-- Weather Suggestion Card -->
+        <section class="dashboard-section">
+            <div class="weather-card">
+                <div class="card-header">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h2>Today's Weather Advisory</h2>
+                </div>
+                <div class="card-content">
+                    <div class="language-tabs">
+                        <button class="lang-tab active" data-lang="en">English</button>
+                        <button class="lang-tab" data-lang="hi">हिंदी</button>
+                        <button class="lang-tab" data-lang="mr">मराठी</button>
+                    </div>
+                    <div id="weatherSuggestion" class="suggestion-text">Loading weather suggestion...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="dashboard-section">
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="action-grid">
+                <div class="action-card" onclick="openImageUpload()">
+                    <i class="fas fa-camera"></i>
+                    <h3>Analyze Field Image</h3>
+                    <p>Upload drone or field image for crop health analysis</p>
+                </div>
+                <div class="action-card" onclick="openSoilUpload()">
+                    <i class="fas fa-flask"></i>
+                    <h3>Upload Soil Report</h3>
+                    <p>Upload soil report for AI-powered analysis</p>
+                </div>
+                <div class="action-card" onclick="openChatbot()">
+                    <i class="fas fa-comments"></i>
+                    <h3>Ask Question</h3>
+                    <p>Chat with AI assistant about farming</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Images -->
+        <section class="dashboard-section">
+            <h2 class="section-title">Recent Field Images</h2>
+            <div id="recentImages" class="images-grid">
+                <div class="loading">Loading images...</div>
+            </div>
+        </section>
+
+        <!-- Recent Soil Reports -->
+        <section class="dashboard-section">
+            <h2 class="section-title">Recent Soil Reports</h2>
+            <div id="recentReports" class="reports-list">
+                <div class="loading">Loading reports...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Upload Modal -->
+    <div id="imageUploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeImageUpload()">&times;</span>
+            <h2>Upload Field Image</h2>
+            <form id="imageUploadForm" onsubmit="handleImageUpload(event)">
+                <div class="form-group">
+                    <label for="imageFile">Select Image</label>
+                    <input type="file" id="imageFile" name="file" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <span>Analyze Image</span>
+                    <i class="fas fa-upload"></i>
+                </button>
+            </form>
+            <div id="imageAnalysisResult" class="analysis-result"></div>
+        </div>
+    </div>
+
+    <!-- Soil Report Upload Modal -->
+    <div id="soilUploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSoilUpload()">&times;</span>
+            <h2>Upload Soil Report</h2>
+            <form id="soilUploadForm" onsubmit="handleSoilUpload(event)">
+                <div class="form-group">
+                    <label for="soilFile">Select Image/PDF</label>
+                    <input type="file" id="soilFile" name="file" accept="image/*,.pdf" required>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <span>Analyze Report</span>
+                    <i class="fas fa-upload"></i>
+                </button>
+            </form>
+            <div id="soilAnalysisResult" class="analysis-result"></div>
+        </div>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div id="chatbotModal" class="modal">
+        <div class="modal-content chatbot-content">
+            <span class="close" onclick="closeChatbot()">&times;</span>
+            <h2><i class="fas fa-robot"></i> AI Farming Assistant</h2>
+            <div id="chatMessages" class="chat-messages"></div>
+            <form id="chatForm" onsubmit="handleChatSubmit(event)" class="chat-input-form">
+                <input type="text" id="chatInput" placeholder="Ask a question about farming..." required>
+                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
 </html>
-
