@@ -34,6 +34,16 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 _Add license information here._
 
+## Team
+
+**Team Name:** Bug Buster
+
+**Members:**
+- Naeem
+- Zahid
+- Saniya
+- Arman
+
 ## Author
 
 Built by [Naeem](https://github.com/buildbynaeem)
